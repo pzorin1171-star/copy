@@ -59,10 +59,18 @@
             display: none;
         }
         
+        /* Контейнер для заголовка с замком */
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
         h1 {
             font-size: 64px;
             color: #d7ccc8;
-            margin-bottom: 20px;
             text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
             text-align: center;
             font-weight: bold;
@@ -70,6 +78,7 @@
             text-transform: uppercase;
             border-bottom: 3px solid #8d6e63;
             padding-bottom: 10px;
+            position: relative;
         }
         
         h2 {
@@ -260,6 +269,36 @@
             background: url('kniga_1.png') no-repeat center center;
             background-size: contain;
         }
+        
+        /* Стили для анимированного замка на заголовке */
+        .castle-icon {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: url('zamok.png') no-repeat center center;
+            background-size: contain;
+            top: -20px; /* Поднят на 20px вверх */
+            left: 50%;
+            transform: translateX(-50%) translateY(-200px);
+            /* Анимация вылета сверху */
+            animation: castleFlyIn 1.8s ease-out 0.3s forwards;
+        }
+        
+        /* Анимация вылета замка сверху */
+        @keyframes castleFlyIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-200px) rotate(15deg);
+            }
+            70% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(10px) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) rotate(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -268,7 +307,11 @@
         
         <!-- Главное меню -->
         <div id="main-menu" class="screen">
-            <h1>Программирование Робота</h1>
+            <div class="title-container">
+                <h1>Программирование Робота
+                    <div class="castle-icon"></div>
+                </h1>
+            </div>
             <p class="parchment">Программируйте робота для выполнения заданий на различных уровнях</p>
             
             <div class="menu-buttons">
